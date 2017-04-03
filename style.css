@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    flex: flex;
+
+}
+
+.header {
+    background-color: #da64ff;
+    height: 4rem;
+    display: flex;
+    padding: .5rem;
+    align-items: center;
+    box-sizing: border-box
+}
+
+.header .icon {
+    flex: 0 0 auto;
+    width: 4rem;
+}
+
+.header .icon img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.header .title {
+    flex: 1 0 auto;
+}
+
+.header .btnGrp{
+    flex: 0 0 auto;
+    cursor: default;
+}
+
+.header .btnGrp:hover{
+    flex: 0 0 auto;
+    color: white;
+}
+
+
+.mainPane {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    height: calc(100% - 4rem);
+}
+
+nav {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    min-width: 10rem;
+    overflow-y: auto;
+}
+
+nav .btn{
+    cursor: default;
+    font-size: .9rem;
+}
+
+nav .btn-wrapper.qeBG {
+    background-color: #eaa6ff;
+}
+
+nav .btn-wrapper.active{
+    background-color: white;
+}
+
+nav .btn-wrapper{
+    padding: .6rem;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+nav .btn h3{
+
+}
+
+nav .btn-wrapper:hover{
+background-color: white;
+
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.content-wrapper {
+flex: 1 0 auto;
+box-sizing: border-box;
+padding: 1rem;
+overflow-y: auto;
+overflow-x: auto;
+max-width: calc(100% - 10rem)
+}
+
+.content h2 {
+    padding: .5rem;
+}
+
+.argument {
+    font-size: .9rem;
+    font-style: italic;
+}
+
+.qeWarning {
+    background-color: #eaa6ff;
+    padding: .5rem;
+    display: inline-block;
+    margin: .5rem;
+}
+
+.qeWarning p{
+
+}
+
+.method {
+    padding-left: 2rem;
+    word-wrap: break-word;
+}
+
+.property {
+    padding-left: 2rem;
+}
+
+.help-page {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.help-page h1{
+    padding: .5rem;
+}
+
+.help-page h2{
+    padding: .5rem; 
+}
+
+.help-page p{
+    margin: 1rem;
+    text-align: justify;
+}
+.closeBtn {
+    cursor: default;
+}
+
+.closeBtn:hover {
+    color: #eaa6ff
+}

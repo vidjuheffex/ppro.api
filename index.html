@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Unofficial Premiere Pro CC API</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="page">
+        <div class="header">
+            <div class="icon">
+                <img src="images/Adobe_Premiere_Pro_CS6_Icon.png" />
+            </div>
+            <div class="title">
+                <h2>Unofficial Premiere Pro CC API</h2>
+            </div>
+            <div class="btnGrp" data-bind="click: function(obj, event) { showHelp(obj, event, $data ) } ">
+                Help
+            </div>
+        </div>
+        <div class="mainPane">
+            <nav data-bind="foreach: apiObjs">
+                <div class="btn-wrapper" data-bind="style: { animation: function(){return 'fadein .5s ' + $index()/15 +'s forwards';}() },
+                                                    click: function(obj, event){$parent.handleClick(obj, event, $parent)},                                                    
+                                                    css: {qeBG: dom == 'qeDOM' ? true : false, active: (($parent.activeApiObj()) && ($parent.activeApiObj().name == name) && ($parent.activeApiObj().dom == dom)) ? true : false}">
+                    <div class="btn noselect">
+                        <h3 data-bind="text: name"></h3>
+                    </div>
+                </div>
+            </nav>
+            <div class="content-wrapper">
+                <div class="content" data-bind="if: activeApiObj() != null">
+                    <div class="objTitle">
+                        <h1 data-bind="text: activeApiObj().name"></h1>
+                    </div>
+                    <div class="qeWarning" data-bind="visible: activeApiObj().dom == 'qeDOM'">
+                        <p>Remember: Items in the QE API are only available after a call to app.enableQE()</p>
+                    </div>
+                    <div><h2 data-bind="text: 'Properties:'"></h2></div>
+                    <div data-bind="foreach: activeApiObj().properties">
+                        <h3 class= "property" data-bind="text: $data"></h3>
+                    </div>
+                    <div><h2 data-bind="text: 'Methods:'"></h2></div>
+                    <div data-bind="foreach: activeApiObj().methods">
+                        <div class="method"><h3><span data-bind="text: name + '('"></span><!-- ko foreach: $data.arguments --><!-- ko if: $index() != 0 --><span data-bind="text: ', '"></span><!-- /ko --><span data-bind="text: $data" class="argument"></span><!-- /ko --><span><span data-bind="text: ')'"></span></span></h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-page" data-bind="visible: helpVisible()">
+        <h1 data-bind="text: 'Help'" style="float: left"></h1>
+        <h1 class="closeBtn" style="float: right" data-bind="text: 'X', click: function(obj, event) { hideHelp(obj, event, $data ) }"></h1>
+        <div style="clear: both"></div>
+        <h2 data-bind="text: 'Scripting In Premiere'"></h2>
+        <div data-bind="html: '<p>Scripting in Premiere Pro is unique due in part to the presence of the QE DOM. Items in purple form part of the QE DOM and are only available after a call to app.enableQE() There is overlap between the QE DOM and what we will refer to as the Normal API (note the project object available in both) so looking both places for the best function is often necessary. However, when referring to like items in the project, note the QE DOM and the normal API return incompatible values to one another. If enabling QE, use QE for all DOM traversals, and only use utility functions out of the normal API</p>'"></div>
+        <h2 data-bind="text: 'About'"></h2>
+        <div data-bind="html: '<p>The methods and properties in this document were generated recursively using the ExtendScript toolkit. Adobe\'s reflection interface provided the arguments where possible. Check out the project github at to contribute. This UNOFFICIAL API documentation is available under an MIT license.</p>'"></div>
+    </div>
+
+    <script src="./bower_components/requirejs/require.js"></script>
+    <script src="./build/require-config.js"></script>
+    <script>
+        require(["build/core"], function (core) {
+            core.init()
+        });
+    </script>
+</body>
+
+</html>

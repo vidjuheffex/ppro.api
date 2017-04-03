@@ -1,0 +1,18 @@
+{
+  "name": "ts.ko",
+  "version": "1.0.0",
+  "description": "Typescript Knockout Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/knockout": "^3.4.40"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/requirejs": "^2.1.29"
+  }
+}
