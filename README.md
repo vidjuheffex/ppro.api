@@ -1,2 +1,2 @@
 # ppro.api
-An unnofficial API for scripting in Adobe Premiere Pro
+Unnofficial API documentation for scripting in Adobe Premiere Pro
